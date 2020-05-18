@@ -35,6 +35,7 @@ class Confetti extends React.PureComponent<Props> {
 
     return (
       <Animated.View style={[styles.confetti, containerStyle]}>
+        <Animated.Image style={styles.containerImage} source="https://res.cloudinary.com/dfcnic8wq/image/upload/v1583572454/FlowDash/FlowDash_Icon_2x_jdkq3s.png" />
         <Animated.View style={[isRounded && styles.rounded, style]} />
       </Animated.View>
     );
@@ -49,6 +50,10 @@ const styles = StyleSheet.create({
   },
   rounded: {
     borderRadius: 100
+  },
+  containerImage:{
+    width: 30,
+    height:40
   }
 });
 
