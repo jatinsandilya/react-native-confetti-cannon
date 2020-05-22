@@ -1,16 +1,15 @@
 // @flow
 
-import * as React from 'react';
-import { StyleSheet, Animated } from 'react-native';
-
-import { randomValue } from '../utils';
+import * as React from "react";
+import { StyleSheet, Animated } from "react-native";
+import { randomValue } from "../utils";
 
 type Interpolations = Array<{
   translateX?: Animated.Interpolation,
   translateY?: Animated.Interpolation,
   rotate?: Animated.Interpolation,
   rotateX?: Animated.Interpolation,
-  rotateY?: Animated.Interpolation
+  rotateY?: Animated.Interpolation,
 }>;
 
 type Props = {|
@@ -18,7 +17,7 @@ type Props = {|
   transform: Interpolations,
   color: string,
   opacity: Animated.Interpolation,
-  testID?: string
+  testID?: string,
 |};
 
 class Confetti extends React.PureComponent<Props> {
@@ -31,12 +30,16 @@ class Confetti extends React.PureComponent<Props> {
     const { containerTransform, transform, opacity, color } = this.props;
     const { width, height, isRounded } = this;
     const containerStyle = { transform: containerTransform };
-    const style = { width, height, backgroundColor: color, transform, opacity};
+    const style = { width, height, backgroundColor: color, transform, opacity };
 
     return (
       <Animated.View style={[styles.confetti, containerStyle]}>
-        <Animated.Image style={styles.containerImage} source="https://res.cloudinary.com/dfcnic8wq/image/upload/v1583572454/FlowDash/FlowDash_Icon_2x_jdkq3s.png" />
-        <Animated.View style={[isRounded && styles.rounded, style]} />
+        <Animated.View style={[styles.rounded, style]}>
+          <Animated.Image
+            style={styles.containerImage}
+            source={require("../../../../static/coin2.png")}
+          ></Animated.Image>
+        </Animated.View>
       </Animated.View>
     );
   }
@@ -44,17 +47,19 @@ class Confetti extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   confetti: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
-    bottom: 0
+    bottom: 0,
   },
   rounded: {
-    borderRadius: 100
+    borderRadius: 100,
   },
-  containerImage:{
-    width: 30,
-    height:40
-  }
+  containerImage: {
+    width: 20,
+    height: 20,
+    borderRadius: 50,
+    backgroundColor: "transparent",
+  },
 });
 
 export default Confetti;

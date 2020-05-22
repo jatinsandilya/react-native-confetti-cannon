@@ -45,17 +45,7 @@ type State = {|
 
 export const TOP_MIN = 0.7;
 export const DEFAULT_COLORS: Array<string> =[
-  '#e67e22',
-  '#2ecc71',
-  '#3498db',
-  '#84AAC2',
-  '#E6D68D',
-  '#F67933',
-  '#42A858',
-  '#4F50A2',
-  '#A86BB7',
-  '#e74c3c',
-  '#1abc9c'
+  'transparent',
 ];
 export const DEFAULT_EXPLOSION_SPEED = 350;
 export const DEFAULT_FALL_SPEED = 3000;
