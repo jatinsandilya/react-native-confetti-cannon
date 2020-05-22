@@ -27,7 +27,7 @@ class Confetti extends React.PureComponent<Props> {
   isRounded: boolean = Math.round(randomValue(0, 1)) === 1;
 
   render() {
-    const { containerTransform, transform, opacity, color } = this.props;
+    const { containerTransform, transform, opacity, color, image } = this.props;
     const { width, height, isRounded } = this;
     const containerStyle = { transform: containerTransform };
     const style = { width, height, backgroundColor: color, transform, opacity };
@@ -35,10 +35,10 @@ class Confetti extends React.PureComponent<Props> {
     return (
       <Animated.View style={[styles.confetti, containerStyle]}>
         <Animated.View style={[styles.rounded, style]}>
-          <Animated.Image
-            style={styles.containerImage}
-            source={require("../../../../static/coin2.png")}
-          ></Animated.Image>
+          {image && <Animated.Image
+            style={image.style}
+            source={image.source}
+          ></Animated.Image>}
         </Animated.View>
       </Animated.View>
     );
@@ -53,13 +53,7 @@ const styles = StyleSheet.create({
   },
   rounded: {
     borderRadius: 100,
-  },
-  containerImage: {
-    width: 20,
-    height: 20,
-    borderRadius: 50,
-    backgroundColor: "transparent",
-  },
+  }
 });
 
 export default Confetti;
